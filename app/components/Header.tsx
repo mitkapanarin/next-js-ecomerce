@@ -9,10 +9,10 @@ const Header = () => {
         </Link>
 
         <nav className="flex space-x-4">
-          <Link href="/tech" className="hover:text-gray-300">
+          <Link href="/category/tech" className="hover:text-gray-300">
             Tech
           </Link>
-          <Link href="/clothes" className="hover:text-gray-300">
+          <Link href="/category/clothes" className="hover:text-gray-300">
             Clothes
           </Link>
         </nav>
