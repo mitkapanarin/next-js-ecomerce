@@ -1,3 +1,4 @@
+// components/ProductCard.tsx
 import React from "react";
 
 interface ProductCardProps {
@@ -6,6 +7,7 @@ interface ProductCardProps {
   title: string;
   price: number;
   onAddToCart: (productId: string | number) => void;
+  category: string;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -14,6 +16,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   title,
   price,
   onAddToCart,
+  category,
 }) => {
   const handleAddToCartClick = () => {
     onAddToCart(id);
@@ -30,9 +33,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
         />
       </div>
       <div className="p-4 flex flex-col flex-grow">
-        <h3 className="font-semibold text-lg mb-2 truncate" title={title}>
+        <h3 className="font-semibold text-lg mb-1 truncate" title={title}>
           {title}
         </h3>
+        <p className="text-sm text-gray-500 mb-2 capitalize">{category}</p>
         <p className="text-gray-700 font-bold mb-4">${price.toFixed(2)}</p>
         <div className="flex-grow"></div>
         <button
