@@ -1,13 +1,15 @@
 "use client";
-import { sampleProducts } from "../../data/products";
-import ProductCard from "../../components/ProductCard";
 
-interface CategoryPageParams {
+import ProductCard from "@/app/components/ProductCard";
+import { sampleProducts } from "@/app/data/products";
+import { use } from "react";
+
+interface CategoryPageParamsPromise {
   slug: string;
 }
 
 interface CategoryPageProps {
-  params: CategoryPageParams;
+  params: Promise<CategoryPageParamsPromise>;
 }
 
 const handleAddToCart = (productId: string | number) => {
@@ -15,7 +17,10 @@ const handleAddToCart = (productId: string | number) => {
   alert(`(Placeholder) Added product ID ${productId} to cart!`);
 };
 
-export default function CategoryPage({ params }: CategoryPageProps) {
+export default function CategoryPage({
+  params: paramsPromise,
+}: CategoryPageProps) {
+  const params = use(paramsPromise);
   const categorySlug = params.slug;
 
   const productsToShow = sampleProducts.filter(
@@ -47,7 +52,8 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         </div>
       ) : (
         <p className="text-center text-gray-600">
-          No products found in the "{displayCategoryName}" category yet.
+          No products found in the &quot;{displayCategoryName}&quot; category
+          yet.
         </p>
       )}
     </div>
