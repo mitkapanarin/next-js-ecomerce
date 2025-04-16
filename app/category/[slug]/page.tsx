@@ -20,7 +20,6 @@ const handleAddToCart = (productId: string | number) => {
 export default function CategoryPage({
   params: paramsPromise,
 }: CategoryPageProps) {
-  // Use the 'use' hook to resolve the params Promise
   const params = use(paramsPromise);
   const categorySlug = params.slug;
 
@@ -53,7 +52,8 @@ export default function CategoryPage({
         </div>
       ) : (
         <p className="text-center text-gray-600">
-          No products found in the "{displayCategoryName}" category yet.
+          No products found in the &quot;{displayCategoryName}&quot; category
+          yet.
         </p>
       )}
     </div>
